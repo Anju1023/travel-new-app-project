@@ -1,4 +1,11 @@
+'use client';
+
+import { useState } from 'react';
+import ClipperModal from '@/components/ClipperModal';
+
 export default function Home() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <main className="relative w-full h-screen overflow-hidden bg-gray-100">
       {/* Map Placeholder */}
@@ -6,9 +13,12 @@ export default function Home() {
         <p className="text-gray-500 font-medium">📍 Google Maps will be here...</p>
       </div>
 
-      {/* Floating Action Button (FAB) - Placeholder */}
+      {/* Floating Action Button (FAB) */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
-        <button className="bg-blue-600 text-white px-8 py-4 rounded-full shadow-2xl hover:scale-105 transition-transform font-bold text-lg flex items-center gap-2">
+        <button 
+          onClick={() => setIsModalOpen(true)}
+          className="bg-blue-600 text-white px-8 py-4 rounded-full shadow-2xl hover:scale-105 transition-transform font-bold text-lg flex items-center gap-2 cursor-pointer"
+        >
           <span>✨</span>
           魔法のクリップ
         </button>
@@ -19,6 +29,12 @@ export default function Home() {
         <h2 className="text-xl font-bold text-gray-800 mb-4">保存したスポット</h2>
         <p className="text-sm text-gray-500">URLをペーストして、地図にピンを刺そう！</p>
       </div>
+
+      {/* Clipper Modal */}
+      <ClipperModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
     </main>
   );
 }
