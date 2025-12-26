@@ -20,7 +20,7 @@
   - [x] Create `MainLayout` with full-screen map container.
   - [x] Implement responsive sidebar/bottom sheet structure.
 - [x] **Components**
-  - [ ] `MapComponent` (Google Maps wrapper).
+  - [x] `MapComponent` (Google Maps wrapper).
   - [x] `ClipperModal` (URL input & result preview).
   - [ ] `SpotList` (Sidebar/Drawer list).
 
@@ -36,7 +36,7 @@
 ### 1.3 Map & Interaction (地図連携)
 - [ ] **Map Logic**
   - [ ] Display pins (markers) from DB data.
-  - [ ] Implement "Fly to" animation when selecting a spot.
+  - [x] Implement "Fly to" animation when selecting a spot.
   - [ ] Add info window (Detail view) on marker click.
 
 ## 💅 Phase 2: Polish & UX (洗練)
