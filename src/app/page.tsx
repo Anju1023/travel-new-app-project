@@ -1,8 +1,18 @@
 'use client';
 
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import ClipperModal from '@/components/ClipperModal';
-import MapComponent from '@/components/MapComponent';
+
+// MapComponent を動的にインポートし、SSR (サーバーサイドレンダリング) を無効化
+const MapComponent = dynamic(() => import('@/components/MapComponent'), { 
+  ssr: false,
+  loading: () => (
+    <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
+      <p className="text-gray-500 animate-pulse">Loading Map...</p>
+    </div>
+  )
+});
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
