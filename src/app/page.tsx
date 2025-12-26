@@ -2,16 +2,15 @@
 
 import { useState } from 'react';
 import ClipperModal from '@/components/ClipperModal';
+import MapComponent from '@/components/MapComponent';
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <main className="relative w-full h-screen overflow-hidden bg-gray-100">
-      {/* Map Placeholder */}
-      <div className="absolute inset-0 flex items-center justify-center bg-blue-50">
-        <p className="text-gray-500 font-medium">📍 Google Maps will be here...</p>
-      </div>
+      {/* Map Component */}
+      <MapComponent />
 
       {/* Floating Action Button (FAB) */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">

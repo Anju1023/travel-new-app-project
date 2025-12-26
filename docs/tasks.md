@@ -16,19 +16,19 @@
 
 ## 🧩 Phase 1: MVP Implementation (最小機能開発)
 ### 1.1 UI Skeleton (画面の枠組み)
-- [ ] **Layout**
-  - [ ] Create `MainLayout` with full-screen map container.
-  - [ ] Implement responsive sidebar/bottom sheet structure.
-- [ ] **Components**
+- [x] **Layout**
+  - [x] Create `MainLayout` with full-screen map container.
+  - [x] Implement responsive sidebar/bottom sheet structure.
+- [x] **Components**
   - [ ] `MapComponent` (Google Maps wrapper).
-  - [ ] `ClipperModal` (URL input & result preview).
+  - [x] `ClipperModal` (URL input & result preview).
   - [ ] `SpotList` (Sidebar/Drawer list).
 
 ### 1.2 AI & Backend (頭脳部分)
-- [ ] **Gemini Integration**
-  - [ ] Implement `extractSpotInfo` server action (call Gemini 3.0 Flash).
-  - [ ] Define structured output schema (JSON) for spot data.
-  - [ ] Test with sample URLs (Instagram, Web).
+- [x] **Gemini Integration**
+  - [x] Implement `extractSpotInfo` server action (call Gemini 3.0 Flash).
+  - [x] Define structured output schema (JSON) for spot data.
+  - [x] Test with sample URLs (Instagram, Web).
 - [ ] **Database**
   - [ ] Define `spots` table schema in Supabase.
   - [ ] Create CRUD functions (save, fetch spots).
