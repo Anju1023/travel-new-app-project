@@ -7,6 +7,8 @@ type SpotInfo = {
   name: string;
   address: string;
   genre: string;
+  latitude: number;
+  longitude: number;
   description?: string;
   tags?: string[];
 };
@@ -14,9 +16,10 @@ type SpotInfo = {
 interface ClipperModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onSpotFound: (spot: SpotInfo) => void;
 }
 
-export default function ClipperModal({ isOpen, onClose }: ClipperModalProps) {
+export default function ClipperModal({ isOpen, onClose, onSpotFound }: ClipperModalProps) {
   const [url, setUrl] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState<SpotInfo | null>(null);
@@ -149,10 +152,10 @@ export default function ClipperModal({ isOpen, onClose }: ClipperModalProps) {
                   キャンセル
                 </button>
                 <button 
-                  onClick={onClose} 
+                  onClick={() => result && onSpotFound(result)} 
                   className="flex-1 py-3 rounded-xl bg-green-500 text-white font-bold shadow-lg hover:bg-green-600 transition-transform active:scale-95"
                 >
-                  保存する (未実装)
+                  地図に表示
                 </button>
               </div>
             </div>

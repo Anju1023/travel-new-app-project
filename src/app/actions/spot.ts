@@ -24,6 +24,16 @@ const schema: Schema = {
       description: "ジャンル（カフェ、ラーメン、観光スポットなど）",
       nullable: false,
     },
+    latitude: {
+      type: SchemaType.NUMBER,
+      description: "店舗の緯度 (decimal degree)",
+      nullable: false,
+    },
+    longitude: {
+      type: SchemaType.NUMBER,
+      description: "店舗の経度 (decimal degree)",
+      nullable: false,
+    },
     description: {
       type: SchemaType.STRING,
       description: "お店の短い紹介文やおすすめポイント",
@@ -36,7 +46,7 @@ const schema: Schema = {
       nullable: true,
     }
   },
-  required: ["name", "address", "genre"],
+  required: ["name", "address", "genre", "latitude", "longitude"],
 };
 
 export async function extractSpotInfo(url: string) {

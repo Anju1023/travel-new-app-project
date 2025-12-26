@@ -14,13 +14,29 @@ const MapComponent = dynamic(() => import('@/components/MapComponent'), {
   )
 });
 
+export type Spot = {
+  name: string;
+  address: string;
+  genre: string;
+  latitude: number;
+  longitude: number;
+  description?: string;
+  tags?: string[];
+};
+
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedSpot, setSelectedSpot] = useState<Spot | null>(null);
+
+  const handleSpotFound = (spot: Spot) => {
+    setSelectedSpot(spot);
+    setIsModalOpen(false); // 解析が終わったらモーダルを閉じる
+  };
 
   return (
     <main className="relative w-full h-screen overflow-hidden bg-gray-100">
       {/* Map Component */}
-      <MapComponent />
+      <MapComponent selectedSpot={selectedSpot} />
 
       {/* Floating Action Button (FAB) */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
@@ -42,7 +58,8 @@ export default function Home() {
       {/* Clipper Modal */}
       <ClipperModal 
         isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
+        onClose={() => setIsModalOpen(false)}
+        onSpotFound={handleSpotFound}
       />
     </main>
   );
