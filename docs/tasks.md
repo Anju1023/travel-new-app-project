@@ -1,0 +1,64 @@
+# ✅ Spot Clipper - 開発タスクリスト (Development Tasks)
+
+**Project Status:** 🚧 Planning & Setup
+
+---
+
+## 🏗️ Phase 0: Project Setup (環境構築)
+- [ ] **Initial Setup**
+  - [ ] Initialize Next.js 16 project (App Router, TypeScript, Tailwind CSS).
+  - [ ] Configure Tailwind CSS v4.
+  - [ ] Setup ESLint & Prettier.
+- [ ] **Infrastructure**
+  - [ ] Create Google Cloud Project (for Maps API & Vertex AI).
+  - [ ] Setup Supabase project (Database).
+  - [ ] Set environment variables (`.env.local`).
+
+## 🧩 Phase 1: MVP Implementation (最小機能開発)
+### 1.1 UI Skeleton (画面の枠組み)
+- [ ] **Layout**
+  - [ ] Create `MainLayout` with full-screen map container.
+  - [ ] Implement responsive sidebar/bottom sheet structure.
+- [ ] **Components**
+  - [ ] `MapComponent` (Google Maps wrapper).
+  - [ ] `ClipperModal` (URL input & result preview).
+  - [ ] `SpotList` (Sidebar/Drawer list).
+
+### 1.2 AI & Backend (頭脳部分)
+- [ ] **Gemini Integration**
+  - [ ] Implement `extractSpotInfo` server action (call Gemini 3.0 Flash).
+  - [ ] Define structured output schema (JSON) for spot data.
+  - [ ] Test with sample URLs (Instagram, Web).
+- [ ] **Database**
+  - [ ] Define `spots` table schema in Supabase.
+  - [ ] Create CRUD functions (save, fetch spots).
+
+### 1.3 Map & Interaction (地図連携)
+- [ ] **Map Logic**
+  - [ ] Display pins (markers) from DB data.
+  - [ ] Implement "Fly to" animation when selecting a spot.
+  - [ ] Add info window (Detail view) on marker click.
+
+## 💅 Phase 2: Polish & UX (洗練)
+- [ ] **Design Refinement**
+  - [ ] Apply "Glassmorphism" styles to cards/modals.
+  - [ ] Add loading animations (Lottie or CSS).
+  - [ ] Implement micro-interactions (haptic feedback, transitions).
+- [ ] **Mobile Optimization**
+  - [ ] Ensure touch-friendly tap targets.
+  - [ ] PWA setup (manifest, icons) for "Add to Home Screen".
+
+## 🚀 Phase 3: Launch Prep (リリース準備)
+- [ ] **Testing**
+  - [ ] Manual testing on mobile devices.
+  - [ ] Fix bugs and edge cases.
+- [ ] **Deployment**
+  - [ ] Deploy to Vercel.
+  - [ ] Verify production environment variables.
+
+---
+
+## 📝 メモ (Notes)
+- **Gemini 3.0 Flash** は速度重視で使用。
+- 地図の API Key は公開しないように注意 (`NEXT_PUBLIC_` の扱い)。
+- モバイルでの操作感を最優先に調整する。
