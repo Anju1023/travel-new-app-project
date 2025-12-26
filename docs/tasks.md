@@ -5,14 +5,14 @@
 ---
 
 ## 🏗️ Phase 0: Project Setup (環境構築)
-- [ ] **Initial Setup**
-  - [ ] Initialize Next.js 16 project (App Router, TypeScript, Tailwind CSS).
-  - [ ] Configure Tailwind CSS v4.
-  - [ ] Setup ESLint & Prettier.
-- [ ] **Infrastructure**
-  - [ ] Create Google Cloud Project (for Maps API & Vertex AI).
-  - [ ] Setup Supabase project (Database).
-  - [ ] Set environment variables (`.env.local`).
+- [x] **Initial Setup**
+  - [x] Initialize Next.js 16 project (App Router, TypeScript, Tailwind CSS).
+  - [x] Configure Tailwind CSS v4.
+  - [x] Setup ESLint & Prettier.
+- [x] **Infrastructure**
+  - [x] Create Google Cloud Project (for Maps API & Vertex AI).
+  - [x] Setup Supabase project (Database).
+  - [x] Set environment variables (`.env.local`).
 
 ## 🧩 Phase 1: MVP Implementation (最小機能開発)
 ### 1.1 UI Skeleton (画面の枠組み)

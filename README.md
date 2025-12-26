@@ -1,4 +1,8 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Spot Clipper 🗺️
+
+**Repository:** https://github.com/Anju1023/travel-new-app-project.git
+
+This is a Next.js application that helps you clip and map locations from SNS.
 
 ## Getting Started
 
