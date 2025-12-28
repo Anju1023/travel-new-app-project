@@ -19,7 +19,7 @@ function MapControl({ selectedSpot }: { selectedSpot: any }) {
   return null;
 }
 
-export default function MapComponent({ selectedSpot }: { selectedSpot: any }) {
+export default function MapComponent({ selectedSpot, allSpots }: { selectedSpot: any, allSpots: any[] }) {
   if (!API_KEY) {
     return (
       <div className="w-full h-full bg-blue-50 flex items-center justify-center p-8 text-center">
@@ -45,11 +45,19 @@ export default function MapComponent({ selectedSpot }: { selectedSpot: any }) {
       >
         <MapControl selectedSpot={selectedSpot} />
 
-        {selectedSpot && (
-          <AdvancedMarker position={{ lat: selectedSpot.latitude, lng: selectedSpot.longitude }}>
-            <Pin background={'#ef4444'} glyphColor={'#fff'} borderColor={'#fff'} />
+        {/* 保存されたすべてのスポットを表示 */}
+        {allSpots.map((spot) => (
+          <AdvancedMarker 
+            key={spot.id || spot.name} 
+            position={{ lat: spot.latitude, lng: spot.longitude }}
+          >
+            <Pin 
+              background={selectedSpot?.id === spot.id || selectedSpot?.name === spot.name ? '#ef4444' : '#fbbf24'} 
+              glyphColor={'#fff'} 
+              borderColor={'#fff'} 
+            />
           </AdvancedMarker>
-        )}
+        ))}
       </Map>
     </APIProvider>
   );

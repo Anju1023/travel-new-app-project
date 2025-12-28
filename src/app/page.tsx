@@ -1,10 +1,23 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import ClipperModal from '@/components/ClipperModal';
+import { getSpots } from '@/app/actions/spot';
 
-// MapComponent を動的にインポートし、SSR (サーバーサイドレンダリング) を無効化
+export type Spot = {
+  id?: string;
+  name: string;
+  address: string;
+  genre: string;
+  latitude: number;
+  longitude: number;
+  description?: string;
+  tags?: string[];
+  original_url?: string;
+};
+
+// MapComponent を動的にインポートし、SSR を無効化
 const MapComponent = dynamic(() => import('@/components/MapComponent'), { 
   ssr: false,
   loading: () => (
@@ -14,29 +27,30 @@ const MapComponent = dynamic(() => import('@/components/MapComponent'), {
   )
 });
 
-export type Spot = {
-  name: string;
-  address: string;
-  genre: string;
-  latitude: number;
-  longitude: number;
-  description?: string;
-  tags?: string[];
-};
-
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedSpot, setSelectedSpot] = useState<Spot | null>(null);
+  const [spots, setSpots] = useState<Spot[]>([]);
 
-  const handleSpotFound = (spot: Spot) => {
-    setSelectedSpot(spot);
-    setIsModalOpen(false); // 解析が終わったらモーダルを閉じる
+  // 初期ロード時に全スポットを取得
+  useEffect(() => {
+    async function loadSpots() {
+      const data = await getSpots();
+      setSpots(data);
+    }
+    loadSpots();
+  }, []);
+
+  const handleSpotFound = (newSpot: Spot) => {
+    setSpots((prev) => [newSpot, ...prev]); // リストに追加
+    setSelectedSpot(newSpot); // 地図をそこに移動
+    setIsModalOpen(false);
   };
 
   return (
     <main className="relative w-full h-screen overflow-hidden bg-gray-100">
       {/* Map Component */}
-      <MapComponent selectedSpot={selectedSpot} />
+      <MapComponent selectedSpot={selectedSpot} allSpots={spots} />
 
       {/* Floating Action Button (FAB) */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">

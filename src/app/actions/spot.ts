@@ -1,6 +1,7 @@
 'use server';
 
 import { GoogleGenerativeAI, SchemaType, Schema } from '@google/generative-ai';
+import { supabase } from '@/lib/supabase';
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
 
@@ -72,9 +73,49 @@ URL: ${url}`;
   try {
     const result = await model.generateContent(prompt);
     const response = result.response;
-    return JSON.parse(response.text());
+    const data = JSON.parse(response.text());
+    return { ...data, original_url: url }; // 元のURLも保持するようにする
   } catch (error) {
     console.error("Gemini Error:", error);
     throw new Error("情報の抽出に失敗しました。URLが正しいか確認してください。");
   }
+}
+
+export async function saveSpot(spot: any) {
+  const { data, error } = await supabase
+    .from('spots')
+    .insert([
+      {
+        name: spot.name,
+        address: spot.address,
+        genre: spot.genre,
+        latitude: spot.latitude,
+        longitude: spot.longitude,
+        description: spot.description,
+        tags: spot.tags,
+        original_url: spot.original_url,
+      },
+    ])
+    .select();
+
+  if (error) {
+    console.error('Supabase Save Error:', error);
+    throw new Error('スポットの保存に失敗しました');
+  }
+
+  return data[0];
+}
+
+export async function getSpots() {
+  const { data, error } = await supabase
+    .from('spots')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('Supabase Fetch Error:', error);
+    return [];
+  }
+
+  return data;
 }
