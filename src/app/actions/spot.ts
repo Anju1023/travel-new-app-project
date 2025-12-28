@@ -55,10 +55,9 @@ export async function extractSpotInfo(url: string) {
     throw new Error('GEMINI_API_KEY is not set');
   }
 
-  // Gemini 3.0 Flash モデルを指定 (最新の名前で指定)
-  // 注: 2025年時点の公式名称に合わせて調整が必要な場合があります
+  // Gemini 3.0 Flash モデルを指定
   const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-flash", // 今は1.5-flashをベースに、3.0が出たらここを変えるね！
+    model: "gemini-1.5-flash",
     generationConfig: {
       responseMimeType: "application/json",
       responseSchema: schema,
@@ -74,7 +73,7 @@ URL: ${url}`;
     const result = await model.generateContent(prompt);
     const response = result.response;
     const data = JSON.parse(response.text());
-    return { ...data, original_url: url }; // 元のURLも保持するようにする
+    return { ...data, original_url: url };
   } catch (error) {
     console.error("Gemini Error:", error);
     throw new Error("情報の抽出に失敗しました。URLが正しいか確認してください。");
@@ -82,6 +81,16 @@ URL: ${url}`;
 }
 
 export async function saveSpot(spot: any) {
+  // 重複チェック: すでに同じURLが保存されているか
+  const { data: existingSpots } = await supabase
+    .from('spots')
+    .select('id')
+    .eq('original_url', spot.original_url);
+
+  if (existingSpots && existingSpots.length > 0) {
+    throw new Error('このスポットはすでに保存されています！');
+  }
+
   const { data, error } = await supabase
     .from('spots')
     .insert([
