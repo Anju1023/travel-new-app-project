@@ -128,3 +128,17 @@ export async function getSpots() {
 
   return data;
 }
+
+export async function deleteSpot(id: string) {
+  const { error } = await supabase
+    .from('spots')
+    .delete()
+    .eq('id', id);
+
+  if (error) {
+    console.error('Supabase Delete Error:', error);
+    throw new Error('スポットの削除に失敗しました');
+  }
+
+  return true;
+}
