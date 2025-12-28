@@ -43,7 +43,7 @@
 - [x] **Design Refinement**
   - [x] Apply "Glassmorphism" styles to cards/modals.
   - [x] Add loading animations (Lottie or CSS).
-  - [ ] Implement micro-interactions (haptic feedback, transitions).
+  - [x] Implement micro-interactions (haptic feedback, transitions).
 - [ ] **Mobile Optimization**
   - [ ] Ensure touch-friendly tap targets.
   - [ ] PWA setup (manifest, icons) for "Add to Home Screen".
