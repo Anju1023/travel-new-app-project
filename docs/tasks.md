@@ -44,9 +44,9 @@
   - [x] Apply "Glassmorphism" styles to cards/modals.
   - [x] Add loading animations (Lottie or CSS).
   - [x] Implement micro-interactions (haptic feedback, transitions).
-- [ ] **Mobile Optimization**
-  - [ ] Ensure touch-friendly tap targets.
-  - [ ] PWA setup (manifest, icons) for "Add to Home Screen".
+- [x] **Mobile Optimization**
+  - [x] Ensure touch-friendly tap targets.
+  - [x] PWA setup (manifest, icons) for "Add to Home Screen".
 
 ## 🚀 Phase 3: Launch Prep (リリース準備)
 - [ ] **Testing**
