@@ -2,6 +2,7 @@
 
 import { GoogleGenerativeAI, SchemaType, Schema } from '@google/generative-ai';
 import { supabase } from '@/lib/supabase';
+import { fetchMetadata } from '@/lib/fetcher';
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
 
@@ -65,10 +66,25 @@ export async function extractSpotInfo(url: string) {
 		},
 	});
 
-	const prompt = `以下のURLのコンテンツから店舗情報を抽出してください。
+	// URLからメタデータを取得（スクレイピング）
+	const metadata = await fetchMetadata(url);
+	
+	let contextText = '';
+	if (metadata) {
+		contextText = `
+[Webページ情報]
+タイトル: ${metadata.title}
+説明: ${metadata.description}
+サイト名: ${metadata.siteName}
+ページ本文抜粋: ${metadata.bodyText}
+`;
+	}
+
+	const prompt = `以下のURLおよびWebページ情報から、店舗情報を抽出してください。
 URLの内容が店舗や場所でない場合は、エラーを返してください。
 
-URL: ${url}`;
+URL: ${url}
+${contextText}`;
 
 	try {
 		const result = await model.generateContent(prompt);

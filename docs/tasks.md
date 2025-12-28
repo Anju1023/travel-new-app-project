@@ -56,6 +56,14 @@
   - [x] Deploy to Vercel.
   - [x] Verify production environment variables.
 
+## 🛡️ Phase 4: Reliability & Scraper (解析精度向上)
+- [ ] **Metadata Fetching**
+  - [ ] Install `cheerio` for HTML parsing.
+  - [ ] Implement `fetchMetadata` utility to extract Title/Description/OGP from URLs.
+- [ ] **Gemini Prompt Enhancement**
+  - [ ] Update `extractSpotInfo` to accept scraped text data alongside URL.
+  - [ ] Improve prompt to handle cases where direct access is blocked.
+
 ---
 
 ## 📝 メモ (Notes)
