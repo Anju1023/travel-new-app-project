@@ -4,8 +4,6 @@ import { GoogleGenerativeAI, SchemaType, Schema } from '@google/generative-ai';
 import { supabase } from '@/lib/supabase';
 import { fetchMetadata } from '@/lib/fetcher';
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
-
 // 出力データの形式を定義 (Structured Output)
 const schema: Schema = {
 	description: '店舗情報の抽出結果',
@@ -56,6 +54,8 @@ export async function extractSpotInfo(url: string) {
 	if (!process.env.GEMINI_API_KEY) {
 		throw new Error('GEMINI_API_KEY is not set');
 	}
+
+	const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 	// Gemini 3.0 Flash モデルを指定
 	const model = genAI.getGenerativeModel({
