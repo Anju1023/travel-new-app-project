@@ -1,6 +1,6 @@
 # ✅ Spot Clipper - 開発タスクリスト (Development Tasks)
 
-**Project Status:** 🚧 Planning & Setup
+**Project Status:** 🎉 v1.0.0 Released!
 
 ---
 
@@ -49,12 +49,12 @@
   - [x] PWA setup (manifest, icons) for "Add to Home Screen".
 
 ## 🚀 Phase 3: Launch Prep (リリース準備)
-- [ ] **Testing**
-  - [ ] Manual testing on mobile devices.
-  - [ ] Fix bugs and edge cases.
-- [ ] **Deployment**
-  - [ ] Deploy to Vercel.
-  - [ ] Verify production environment variables.
+- [x] **Testing**
+  - [x] Manual testing on mobile devices.
+  - [x] Fix bugs and edge cases.
+- [x] **Deployment**
+  - [x] Deploy to Vercel.
+  - [x] Verify production environment variables.
 
 ---
 
