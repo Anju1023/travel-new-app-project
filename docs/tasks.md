@@ -42,7 +42,7 @@
 ## 💅 Phase 2: Polish & UX (洗練)
 - [x] **Design Refinement**
   - [x] Apply "Glassmorphism" styles to cards/modals.
-  - [ ] Add loading animations (Lottie or CSS).
+  - [x] Add loading animations (Lottie or CSS).
   - [ ] Implement micro-interactions (haptic feedback, transitions).
 - [ ] **Mobile Optimization**
   - [ ] Ensure touch-friendly tap targets.
