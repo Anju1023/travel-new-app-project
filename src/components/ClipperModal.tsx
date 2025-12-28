@@ -69,29 +69,29 @@ export default function ClipperModal({ isOpen, onClose, onSpotFound }: ClipperMo
       />
 
       {/* Modal Content */}
-      <div className="relative w-full max-w-md bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl overflow-hidden border border-white/50 animate-in fade-in zoom-in duration-200">
+      <div className="relative w-full max-w-md bg-white/70 backdrop-blur-xl rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.2)] overflow-hidden border border-white/40 animate-in fade-in zoom-in duration-300">
         
         {/* Header */}
-        <div className="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-white/50">
-          <h3 className="font-bold text-gray-800 text-lg">🔗 魔法のクリップ</h3>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+        <div className="px-8 py-6 border-b border-white/20 flex justify-between items-center bg-white/30">
+          <h3 className="font-black text-gray-800 text-xl tracking-tight">🔗 魔法のクリップ</h3>
+          <button onClick={onClose} className="w-8 h-8 flex items-center justify-center rounded-full bg-black/5 text-gray-500 hover:bg-black/10 transition-colors">
             ✕
           </button>
         </div>
 
         {/* Body */}
-        <div className="p-6 space-y-6">
+        <div className="p-8 space-y-6">
           {!result ? (
             // Step 1: Input URL
             <div className="space-y-4">
-              <label className="block text-sm font-medium text-gray-600">
+              <label className="block text-sm font-bold text-gray-500 ml-1">
                 SNSの投稿URLをペースト
               </label>
               <div className="relative">
                 <input
                   type="text"
                   placeholder="https://instagram.com/p/..."
-                  className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                  className="w-full px-5 py-4 rounded-2xl bg-white/50 border border-white/60 focus:outline-none focus:ring-4 focus:ring-primary/20 focus:border-primary transition-all text-gray-700 placeholder:text-gray-300"
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleAnalyze()}
@@ -101,7 +101,7 @@ export default function ClipperModal({ isOpen, onClose, onSpotFound }: ClipperMo
               <button
                 onClick={handleAnalyze}
                 disabled={isLoading || !url}
-                className="w-full py-3.5 rounded-xl bg-blue-600 text-white font-bold shadow-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all active:scale-95 flex items-center justify-center gap-2"
+                className="w-full py-4 rounded-2xl bg-primary text-white font-black shadow-[0_10px_20px_rgba(0,0,0,0.1)] hover:shadow-[0_15px_30px_rgba(0,0,0,0.15)] hover:-translate-y-0.5 disabled:opacity-50 disabled:translate-y-0 disabled:shadow-none transition-all active:scale-95 flex items-center justify-center gap-2"
               >
                 {isLoading ? (
                   <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -112,68 +112,70 @@ export default function ClipperModal({ isOpen, onClose, onSpotFound }: ClipperMo
               </button>
 
               {error && (
-                <div className="p-3 bg-red-50 text-red-600 text-sm rounded-lg text-center">
-                  {error}
+                <div className="p-4 bg-red-50/50 backdrop-blur-sm text-red-600 text-sm font-bold rounded-xl text-center border border-red-100">
+                  ⚠️ {error}
                 </div>
               )}
             </div>
           ) : (
             // Step 2: Result Preview
-            <div className="space-y-4 animate-in slide-in-from-bottom duration-300">
-              <div className="bg-blue-50/50 p-4 rounded-2xl border border-blue-100">
-                <div className="flex items-start gap-3 mb-2">
-                  <div className="bg-white p-2 rounded-lg shadow-sm text-2xl">
+            <div className="space-y-6 animate-in slide-in-from-bottom-4 duration-500">
+              <div className="bg-white/40 p-6 rounded-[2rem] border border-white/60 shadow-inner">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="bg-white p-3 rounded-2xl shadow-sm text-3xl">
                     📍
                   </div>
                   <div>
-                    <h4 className="font-bold text-lg text-gray-900">{result.name}</h4>
-                    <span className="inline-block px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 text-xs font-bold mt-1">
+                    <h4 className="font-black text-xl text-gray-900 leading-tight">{result.name}</h4>
+                    <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-black mt-2 uppercase tracking-wider">
                       {result.genre}
                     </span>
                   </div>
                 </div>
                 
-                <p className="text-sm text-gray-600 mt-2 flex items-start gap-1">
-                  <span className="text-gray-400">🏠</span>
-                  {result.address}
-                </p>
+                <div className="space-y-3">
+                  <p className="text-sm text-gray-600 flex items-start gap-2">
+                    <span className="text-primary mt-0.5 font-bold">ADDRESS</span>
+                    {result.address}
+                  </p>
 
-                {result.description && (
-                  <div className="mt-3 text-sm text-gray-700 bg-white/60 p-3 rounded-xl">
-                    💡 {result.description}
-                  </div>
-                )}
+                  {result.description && (
+                    <div className="mt-4 text-sm text-gray-700 bg-white/80 p-4 rounded-2xl shadow-sm leading-relaxed border border-white/40">
+                      {result.description}
+                    </div>
+                  )}
 
-                {result.tags && (
-                  <div className="flex flex-wrap gap-2 mt-3">
-                    {result.tags.map(tag => (
-                      <span key={tag} className="px-2 py-1 bg-white border border-gray-100 rounded-md text-xs text-gray-500">
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
+                  {result.tags && (
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      {result.tags.map(tag => (
+                        <span key={tag} className="px-3 py-1 bg-white/80 border border-white/60 rounded-xl text-[10px] font-bold text-gray-500 shadow-sm">
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
 
-              <div className="flex gap-3 pt-2">
+              <div className="flex gap-4">
                 <button 
                   onClick={() => setResult(null)}
                   disabled={isLoading}
-                  className="flex-1 py-3 rounded-xl bg-gray-100 text-gray-700 font-bold hover:bg-gray-200 transition-colors"
+                  className="flex-1 py-4 rounded-2xl bg-gray-200/50 text-gray-600 font-bold hover:bg-gray-200 transition-colors"
                 >
-                  キャンセル
+                  やり直す
                 </button>
                 <button 
                   onClick={handleSave} 
                   disabled={isLoading}
-                  className="flex-1 py-3 rounded-xl bg-green-500 text-white font-bold shadow-lg hover:bg-green-600 transition-transform active:scale-95 flex items-center justify-center gap-2"
+                  className="flex-1 py-4 rounded-2xl bg-green-500 text-white font-black shadow-[0_10px_20px_rgba(34,197,94,0.3)] hover:shadow-[0_15px_30px_rgba(34,197,94,0.4)] hover:-translate-y-0.5 transition-all active:scale-95 flex items-center justify-center gap-2"
                 >
                   {isLoading ? (
                     <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                  ) : '保存して表示'}
+                  ) : '保存して追加'}
                 </button>
               </div>
             </div>

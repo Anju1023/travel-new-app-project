@@ -37,7 +37,7 @@
 - [x] **Map Logic**
   - [x] Display pins (markers) from DB data.
   - [x] Implement "Fly to" animation when selecting a spot.
-  - [ ] Add info window (Detail view) on marker click.
+  - [x] Add info window (Detail view) on marker click.
 
 ## 💅 Phase 2: Polish & UX (洗練)
 - [ ] **Design Refinement**

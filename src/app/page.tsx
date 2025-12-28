@@ -54,18 +54,18 @@ export default function Home() {
       <MapComponent selectedSpot={selectedSpot} allSpots={spots} />
 
       {/* Floating Action Button (FAB) */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 md:left-auto md:right-8 md:translate-x-0">
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 md:left-auto md:right-10 md:translate-x-0">
         <button 
           onClick={() => setIsModalOpen(true)}
-          className="bg-blue-600 text-white px-8 py-4 rounded-full shadow-2xl hover:scale-105 transition-transform font-bold text-lg flex items-center gap-2 cursor-pointer"
+          className="bg-primary text-white px-10 py-5 rounded-[2rem] shadow-[0_15px_40px_rgba(0,0,0,0.2)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:-translate-y-1 transition-all duration-300 font-black text-xl flex items-center gap-3 cursor-pointer group active:scale-95"
         >
-          <span>✨</span>
+          <span className="text-2xl group-hover:rotate-12 transition-transform">✨</span>
           魔法のクリップ
         </button>
       </div>
 
       {/* Sidebar / Bottom Sheet */}
-      <div className="absolute bottom-0 left-0 right-0 h-[35vh] bg-white/80 backdrop-blur-md border-t border-gray-200 rounded-t-3xl shadow-2xl p-4 z-20 md:left-4 md:top-4 md:bottom-4 md:w-80 md:h-auto md:rounded-2xl md:border-t-0 overflow-hidden">
+      <div className="absolute bottom-0 left-0 right-0 h-[45vh] bg-white/60 backdrop-blur-2xl border-t border-white/40 rounded-t-[3rem] shadow-[0_-20px_50px_rgba(0,0,0,0.1)] p-6 z-20 md:left-6 md:top-6 md:bottom-6 md:w-[22rem] md:h-auto md:rounded-[3rem] md:border-t-0 overflow-hidden border-white/20">
         <SpotList 
           spots={spots} 
           onSpotSelect={(spot) => setSelectedSpot(spot)} 
