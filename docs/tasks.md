@@ -29,13 +29,13 @@
   - [x] Implement `extractSpotInfo` server action (call Gemini 3.0 Flash).
   - [x] Define structured output schema (JSON) for spot data.
   - [x] Test with sample URLs (Instagram, Web).
-- [ ] **Database**
-  - [ ] Define `spots` table schema in Supabase.
-  - [ ] Create CRUD functions (save, fetch spots).
+- [x] **Database**
+  - [x] Define `spots` table schema in Supabase.
+  - [x] Create CRUD functions (save, fetch spots).
 
 ### 1.3 Map & Interaction (地図連携)
-- [ ] **Map Logic**
-  - [ ] Display pins (markers) from DB data.
+- [x] **Map Logic**
+  - [x] Display pins (markers) from DB data.
   - [x] Implement "Fly to" animation when selecting a spot.
   - [ ] Add info window (Detail view) on marker click.
 
