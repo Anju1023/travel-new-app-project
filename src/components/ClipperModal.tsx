@@ -78,7 +78,7 @@ export default function ClipperModal({ isOpen, onClose, onSpotFound }: ClipperMo
         initial={{ opacity: 0, scale: 0.9, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.9, y: 20 }}
-        className="relative w-full max-w-md bg-white/70 backdrop-blur-xl rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.2)] overflow-hidden border border-white/40"
+        className="relative w-full max-w-md bg-white/70 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden border border-white/40"
       >
         
         {/* Header */}
@@ -120,7 +120,7 @@ export default function ClipperModal({ isOpen, onClose, onSpotFound }: ClipperMo
                   disabled={isLoading || !url}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full py-4 rounded-2xl bg-primary text-white font-black shadow-[0_10px_20px_rgba(0,0,0,0.1)] hover:shadow-[0_15px_30px_rgba(0,0,0,0.15)] hover:-translate-y-0.5 disabled:opacity-50 disabled:translate-y-0 disabled:shadow-none transition-all flex items-center justify-center gap-2 overflow-hidden relative"
+                  className="w-full py-4 rounded-2xl bg-primary text-white font-black shadow-lg shadow-primary/20 hover:shadow-primary/30 hover:-translate-y-0.5 disabled:opacity-50 disabled:translate-y-0 disabled:shadow-none transition-all flex items-center justify-center gap-2 overflow-hidden relative"
                 >
                   {isLoading ? (
                     <div className="flex items-center gap-3">
@@ -152,7 +152,7 @@ export default function ClipperModal({ isOpen, onClose, onSpotFound }: ClipperMo
                 exit={{ opacity: 0, x: -20 }}
                 className="space-y-6"
               >
-                <div className="bg-white/40 p-6 rounded-[2rem] border border-white/60 shadow-inner">
+                <div className="bg-white/40 p-6 rounded-3xl border border-white/60 shadow-inner">
                   <div className="flex items-start gap-4 mb-4">
                     <div className="bg-white p-3 rounded-2xl shadow-sm text-3xl">
                       📍
@@ -167,7 +167,7 @@ export default function ClipperModal({ isOpen, onClose, onSpotFound }: ClipperMo
                   
                   <div className="space-y-3">
                     <p className="text-sm text-gray-600 flex items-start gap-2">
-                      <span className="text-primary mt-0.5 font-bold">ADDRESS</span>
+                      <span className="text-primary mt-0.5 font-bold text-[10px]">ADDRESS</span>
                       {result.address}
                     </p>
 
@@ -214,7 +214,7 @@ export default function ClipperModal({ isOpen, onClose, onSpotFound }: ClipperMo
                     whileTap={{ scale: 0.98 }}
                     onClick={handleSave} 
                     disabled={isLoading}
-                    className="flex-1 py-4 rounded-2xl bg-green-500 text-white font-black shadow-[0_10px_20px_rgba(34,197,94,0.3)] hover:shadow-[0_15px_30px_rgba(34,197,94,0.4)] hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
+                    className="flex-1 py-4 rounded-2xl bg-green-500 text-white font-black shadow-lg shadow-green-500/20 hover:shadow-green-500/30 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
                   >
                     {isLoading ? (
                       <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

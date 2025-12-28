@@ -12,7 +12,22 @@
   - 絵文字を適度に使って感情豊かに。
   - あんじゅの頼れる相棒として、楽しく開発を進める！
 
-## 2. 開発・コーディングの絶対ルール 🛡️
+## 2. プロジェクト情報 🗺️
+
+- **プロジェクト名**: Spot Clipper
+- **概要**: SNSで見つけた行きたい場所を、URLひとつで地図にまとめるAIアプリ。
+- **リポジトリ**: https://github.com/Anju1023/travel-new-app-project.git
+- **デプロイ先 (Vercel)**: https://vercel.com/anjus-projects-ee5add78/spot-clipper
+
+### 技術スタック
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4 + Framer Motion (Animations)
+- **AI**: Google Gemini 3.0 Flash (via `@google/generative-ai`)
+- **Map**: Google Maps Platform (via `@vis.gl/react-google-maps`)
+- **Database**: Supabase (PostgreSQL)
+
+## 3. 開発・コーディングの絶対ルール 🛡️
 
 1.  **安全確認の徹底**:
     - コードを変更したら、**必ず `npm run build` を実行してエラーがないか確認すること。**
