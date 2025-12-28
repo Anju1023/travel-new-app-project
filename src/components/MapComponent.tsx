@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect } from 'react';
-import { APIProvider, Map, AdvancedMarker, Pin, useMap } from '@vis.gl/react-google-maps';
+import { useEffect, useState } from 'react';
+import { APIProvider, Map, AdvancedMarker, Pin, useMap, InfoWindow } from '@vis.gl/react-google-maps';
 
 const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '';
 
@@ -20,6 +20,17 @@ function MapControl({ selectedSpot }: { selectedSpot: any }) {
 }
 
 export default function MapComponent({ selectedSpot, allSpots }: { selectedSpot: any, allSpots: any[] }) {
+  const [infoWindowOpen, setInfoWindowOpen] = useState(false);
+  const [clickedSpot, setClickedSpot] = useState<any | null>(null);
+
+  // 選択されたスポットが変わったら、そのスポットの詳細を開く
+  useEffect(() => {
+    if (selectedSpot) {
+      setClickedSpot(selectedSpot);
+      setInfoWindowOpen(true);
+    }
+  }, [selectedSpot]);
+
   if (!API_KEY) {
     return (
       <div className="w-full h-full bg-blue-50 flex items-center justify-center p-8 text-center">
@@ -50,14 +61,46 @@ export default function MapComponent({ selectedSpot, allSpots }: { selectedSpot:
           <AdvancedMarker 
             key={spot.id || spot.name} 
             position={{ lat: spot.latitude, lng: spot.longitude }}
+            onClick={() => {
+              setClickedSpot(spot);
+              setInfoWindowOpen(true);
+            }}
           >
             <Pin 
-              background={selectedSpot?.id === spot.id || selectedSpot?.name === spot.name ? '#ef4444' : '#fbbf24'} 
+              background={clickedSpot?.id === spot.id || clickedSpot?.name === spot.name ? '#ef4444' : '#fbbf24'} 
               glyphColor={'#fff'} 
               borderColor={'#fff'} 
             />
           </AdvancedMarker>
         ))}
+
+        {/* 詳細ウィンドウ (InfoWindow) */}
+        {infoWindowOpen && clickedSpot && (
+          <InfoWindow
+            position={{ lat: clickedSpot.latitude, lng: clickedSpot.longitude }}
+            onCloseClick={() => setInfoWindowOpen(false)}
+          >
+            <div className="p-2 max-w-[200px]">
+              <h3 className="font-bold text-gray-900 text-sm mb-1">{clickedSpot.name}</h3>
+              <p className="text-[10px] text-gray-500 mb-2">{clickedSpot.address}</p>
+              {clickedSpot.description && (
+                <p className="text-[11px] text-gray-700 line-clamp-3 bg-gray-50 p-1.5 rounded">
+                  {clickedSpot.description}
+                </p>
+              )}
+              {clickedSpot.original_url && (
+                <a 
+                  href={clickedSpot.original_url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-[10px] text-blue-500 hover:underline mt-2 inline-block"
+                >
+                  🔗 元の投稿を見る
+                </a>
+              )}
+            </div>
+          </InfoWindow>
+        )}
       </Map>
     </APIProvider>
   );
