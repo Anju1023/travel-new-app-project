@@ -63,27 +63,30 @@ URL を解析する魔法のインターフェース。
 ## 3. UI コンポーネント設計 (Tailwind CSS v4)
 
 ### Buttons
-- **Primary:** `bg-primary text-white rounded-full shadow-lg hover:scale-105 transition-transform`
+- **Primary:** `bg-primary text-white rounded-full shadow-lg hover:scale-105 transition-transform` (with Framer Motion `whileHover`)
 - **Ghost:** `bg-transparent text-gray-700 hover:bg-gray-100`
 
 ### Cards (Glass Effect)
-- `bg-white/80 backdrop-blur-md border border-white/20 shadow-xl rounded-2xl`
-- iOS のような洗練された質感。
+- `bg-white/70 backdrop-blur-xl border border-white/40 shadow-2xl rounded-3xl`
+- 非常に強いぼかし効果と透明度で、背景地図との一体感を出す。
 
 ### Typography
 - **Font:** Inter (英数字), Noto Sans JP (日本語)
-- **Headings:** 太字で視認性高く。
+- **Headings:** `font-black` (Extra Bold) を使用し、モダンで力強い印象に。
 - **Body:** スマホでも読みやすいサイズ感 (16px base)。
 
 ---
 
 ## 4. インタラクション (Interaction)
+- **Library:** **Framer Motion** を使用。
+- **Transitions:**
+  - モーダル: `opacity` と `scale` を組み合わせた「ふわっ」とした出現アニメーション。
+  - リスト: `AnimatePresence` を使用し、アイテム追加・削除時にスムーズにレイアウトが変更される。
 - **Micro-interactions:**
-  - ピンをタップした時に「ぽよん」と跳ねるアニメーション。
-  - 保存完了時に紙吹雪が舞うようなフィードバック。
-- **Haptic Feedback:**
-  - クリップ完了時などに触覚フィードバックを入れて「完了した感」を出す。
+  - ボタンタップ時に `scale: 0.98` で押し込み感を演出。
+  - ホバー時に `scale: 1.02` で浮き上がり感を演出。
+  - **Lucide React** のアイコンを使用し、視認性と統一感を向上。
 
-## 5. レスポンシブ対応
-- 基本は **Mobile First**。
-- PC 表示時は、左側にリスト／右側に地図の 2 カラムレイアウトに変形。
+## 5. レスポンシブ & PWA
+- **Mobile First:** スマホでの操作を最優先。
+- **PWA:** `manifest.json` と `viewport` 設定により、ホーム画面に追加してネイティブアプリのように動作可能。
