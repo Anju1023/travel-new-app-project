@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 import ClipperModal from '@/components/ClipperModal';
 import { getSpots } from '@/app/actions/spot';
 import SpotList from '@/components/SpotList';
+import { Sparkles } from 'lucide-react';
 
 export type Spot = {
   id?: string;
@@ -67,9 +68,9 @@ export default function Home() {
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 md:left-auto md:right-10 md:translate-x-0">
         <button 
           onClick={() => setIsModalOpen(true)}
-          className="bg-primary text-white px-10 py-5 rounded-full shadow-2xl hover:shadow-primary/30 hover:-translate-y-1 transition-all duration-300 font-black text-xl flex items-center gap-3 cursor-pointer group active:scale-95"
+          className="bg-primary text-white px-8 py-5 rounded-full shadow-2xl hover:shadow-primary/30 hover:-translate-y-1 transition-all duration-300 font-black text-xl flex items-center gap-3 cursor-pointer group active:scale-95"
         >
-          <span className="text-2xl group-hover:rotate-12 transition-transform">✨</span>
+          <Sparkles className="w-6 h-6 group-hover:rotate-12 transition-transform" />
           魔法のクリップ
         </button>
       </div>
