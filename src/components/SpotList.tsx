@@ -4,11 +4,35 @@ import { Spot } from '@/app/page';
 
 interface SpotListProps {
   spots: Spot[];
+  isLoading?: boolean;
   onSpotSelect: (spot: Spot) => void;
   selectedSpotId?: string;
 }
 
-export default function SpotList({ spots, onSpotSelect, selectedSpotId }: SpotListProps) {
+export default function SpotList({ spots, isLoading, onSpotSelect, selectedSpotId }: SpotListProps) {
+  if (isLoading) {
+    return (
+      <div className="flex flex-col h-full">
+        <div className="flex items-center justify-between mb-6 px-2">
+          <div className="h-8 w-32 bg-gray-200 rounded-lg animate-pulse" />
+          <div className="h-6 w-20 bg-gray-200 rounded-full animate-pulse" />
+        </div>
+        <div className="space-y-4">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="p-5 rounded-[1.5rem] bg-white/40 border border-white/60 space-y-3">
+              <div className="h-5 w-3/4 bg-gray-200 rounded animate-pulse" />
+              <div className="flex gap-2">
+                <div className="h-4 w-12 bg-gray-200 rounded animate-pulse" />
+                <div className="h-4 w-12 bg-gray-200 rounded animate-pulse" />
+              </div>
+              <div className="h-3 w-full bg-gray-200 rounded animate-pulse" />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col h-full">
       <div className="flex items-center justify-between mb-6 px-2">

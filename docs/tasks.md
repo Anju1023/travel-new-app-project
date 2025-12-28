@@ -22,7 +22,7 @@
 - [x] **Components**
   - [x] `MapComponent` (Google Maps wrapper).
   - [x] `ClipperModal` (URL input & result preview).
-  - [ ] `SpotList` (Sidebar/Drawer list).
+  - [x] `SpotList` (Sidebar/Drawer list).
 
 ### 1.2 AI & Backend (頭脳部分)
 - [x] **Gemini Integration**
@@ -40,8 +40,8 @@
   - [x] Add info window (Detail view) on marker click.
 
 ## 💅 Phase 2: Polish & UX (洗練)
-- [ ] **Design Refinement**
-  - [ ] Apply "Glassmorphism" styles to cards/modals.
+- [x] **Design Refinement**
+  - [x] Apply "Glassmorphism" styles to cards/modals.
   - [ ] Add loading animations (Lottie or CSS).
   - [ ] Implement micro-interactions (haptic feedback, transitions).
 - [ ] **Mobile Optimization**

@@ -32,12 +32,15 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedSpot, setSelectedSpot] = useState<Spot | null>(null);
   const [spots, setSpots] = useState<Spot[]>([]);
+  const [isLoadingSpots, setIsLoadingSpots] = useState(true);
 
   // 初期ロード時に全スポットを取得
   useEffect(() => {
     async function loadSpots() {
+      setIsLoadingSpots(true);
       const data = await getSpots();
       setSpots(data);
+      setIsLoadingSpots(false);
     }
     loadSpots();
   }, []);
@@ -68,6 +71,7 @@ export default function Home() {
       <div className="absolute bottom-0 left-0 right-0 h-[45vh] bg-white/60 backdrop-blur-2xl border-t border-white/40 rounded-t-[3rem] shadow-[0_-20px_50px_rgba(0,0,0,0.1)] p-6 z-20 md:left-6 md:top-6 md:bottom-6 md:w-[22rem] md:h-auto md:rounded-[3rem] md:border-t-0 overflow-hidden border-white/20">
         <SpotList 
           spots={spots} 
+          isLoading={isLoadingSpots}
           onSpotSelect={(spot) => setSelectedSpot(spot)} 
           selectedSpotId={selectedSpot?.id}
         />
